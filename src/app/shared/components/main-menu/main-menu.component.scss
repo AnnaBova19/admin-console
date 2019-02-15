@@ -1,0 +1,16 @@
+.main-menu {
+  line-height: 64px;
+  float: right;
+}
+
+.main-menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .logo-wrapper {
+    img {
+      height: 45px;
+    }
+  }
+}

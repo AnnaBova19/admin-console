@@ -1,0 +1,10 @@
+<div class="main-menu-container">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.png" />
+  </div>
+  <ul nz-menu [nzMode]="'horizontal'" nzTheme='dark' class="main-menu">
+    <li *ngFor="let menu of menuList" nz-menu-item>
+      <a [routerLink]="menu['link']">{{ menu['label'] }}</a>
+    </li>
+  </ul>
+</div>

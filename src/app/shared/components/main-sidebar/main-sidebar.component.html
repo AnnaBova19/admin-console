@@ -1,0 +1,43 @@
+<ul nz-menu [nzMode]="'inline'" nzTheme='dark' class="sidebar">
+  <li nz-menu-item nzDisabled><fa-icon icon="cogs"></fa-icon>Admin Console</li>
+  <li nz-menu-divider></li>
+  <li nz-submenu [(nzOpen)]="openMap.sub1" (nzOpenChange)="openHandler('sub1')">
+    <a routerLink="/general-content/list" title><fa-icon [icon]="['fas', 'folder']" size="s"></fa-icon>General Content</a>
+    <ul>
+      <li nz-menu-item>
+        <a routerLink="/general-content/create" title><fa-icon icon="plus"></fa-icon>Create Post</a>
+      </li>
+      <li nz-submenu>
+        <a title><fa-icon icon="images"></fa-icon>Add Media</a>
+        <ul>
+          <li nz-menu-item><a title><fa-icon icon="video"></fa-icon>Add Video</a></li>
+          <li nz-menu-item><a title><fa-icon icon="podcast"></fa-icon>Add Podcast</a></li>
+          <li nz-menu-item><a title><fa-icon icon="image"></fa-icon>Add Image</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <a title><fa-icon icon="graduation-cap"></fa-icon>Education</a>
+  </li>
+  <li nz-menu-item>
+    <a title><fa-icon icon="bell"></fa-icon>Careers</a>
+  </li>
+  <li nz-menu-item>
+    <a title><fa-icon icon="calendar-alt"></fa-icon>Events</a>
+  </li>
+  <li nz-submenu [(nzOpen)]="openMap.sub2" (nzOpenChange)="openHandler('sub2')">
+    <a routerLink="/unite/list" title><fa-icon icon="bookmark" size="s"></fa-icon>UNITE</a>
+    <ul>
+      <li nz-menu-item>
+        <a routerLink="/unite/create" title><fa-icon icon="plus"></fa-icon>Create Issue</a>
+      </li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <a title><fa-icon icon="users"></fa-icon>Users</a>
+  </li>
+  <li nz-menu-item>
+    <a title><fa-icon icon="key"></fa-icon>Permissions</a>
+  </li>
+</ul>

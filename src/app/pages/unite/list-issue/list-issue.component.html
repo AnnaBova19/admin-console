@@ -1,0 +1,29 @@
+<h1>All Issues</h1>
+<nz-divider></nz-divider>
+<nz-layout>
+  <nz-content class="list-content">
+     <nz-table
+      #rowSelectionTable
+      [nzData]="displayData"
+      nzSize="small">
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
+        <tr>
+          <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+          <th nzShowSort nzSortKey="vol">Volume/Issue</th>
+          <th nzShowSort nzSortKey="publishDate">Publication Date</th>
+          <th nzShowSort nzSortKey="createUser">Creator</th>
+          <th nzShowSort nzSortKey="status">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td nzShowCheckbox [(nzChecked)]="data.checked" [nzDisabled]="data.disabled" (nzCheckedChange)="refreshStatus()"></td>
+          <td>{{data.vol}} &nbsp; {{data.issue}}</td>
+          <td>{{getFormattedDate(data.publishDate)}}</td>
+          <td>{{data.createUser}}</td>
+          <td>{{data.status}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-content>
+</nz-layout>

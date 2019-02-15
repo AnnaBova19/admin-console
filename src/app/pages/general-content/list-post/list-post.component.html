@@ -1,0 +1,38 @@
+<h1>All Posts</h1>
+<nz-divider></nz-divider>
+<nz-layout>
+  <nz-content class="list-content">
+     <nz-table
+      #rowSelectionTable
+      [nzData]="allPosts"
+      nzSize="small"
+      (nzCurrentPageDataChange)="currentPageDataChange($event)"
+      (nzPageIndexChange)="refreshStatus()"
+      (nzPageSizeChange)="refreshStatus()">
+      <thead>
+        <tr>
+          <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+          <th>Title</th>
+          <th>Visibility</th>
+          <th>Author</th>
+          <th>Categories</th>
+          <th>Expected</th>
+          <th>Active</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td nzShowCheckbox [(nzChecked)]="data.checked" [nzDisabled]="data.disabled" (nzCheckedChange)="refreshStatus()"></td>
+          <td>{{data.title}}</td>
+          <td>{{data.visibility}}</td>
+          <td>{{data.author}}</td>
+          <td>{{data.categories}}</td>
+          <td>{{data.expected}}</td>
+          <td>{{data.active}}</td>
+          <td>{{data.status}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-content>
+</nz-layout>

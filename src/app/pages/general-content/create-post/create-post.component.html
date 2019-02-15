@@ -1,0 +1,73 @@
+<h1>New Post</h1>
+<nz-divider></nz-divider>
+<nz-layout>
+  <nz-content class="general-content">
+    <div nz-row nzGutter="24">
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <div class="clearfix">
+            <nz-upload
+              nzAction="https://jsonplaceholder.typicode.com/posts/"
+              nzListType="picture"
+              [(nzFileList)]="post.header"
+            >
+              <button nz-button>
+                <span>
+                  <fa-icon icon="plus"></fa-icon>
+                  Upload
+                </span>
+              </button>
+            </nz-upload>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <nz-date-picker [(ngModel)]="post.postDate" (ngModelChange)="onChange($event)"></nz-date-picker>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzGutter="24">
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <input nz-input placeholder="Title" [(ngModel)]="post.postTitle">
+        </div>
+      </div>
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <input nz-input placeholder="Sub Title" [(ngModel)]="post.postSubTitle">
+        </div>
+      </div>
+    </div>
+    <div nz-row nzGutter="24">
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <nz-select class="post_author" [(ngModel)]="post.postAuthor" nzAllowClear nzPlaceHolder="Author Name">
+            <nz-option *ngFor="let author of authorList" [nzValue]="author.slug" [nzLabel]="author.name"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <nz-select class="post_sponsor" [(ngModel)]="post.postSponsor" nzAllowClear nzPlaceHolder="Sponsor">
+            <nz-option *ngFor="let sponsor of sponsorList" [nzValue]="sponsor.slug" [nzLabel]="sponsor.name"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzGutter="24">
+      <div nz-col nzSpan="24" class="gutter-row">
+        <div class="gutter-box">
+          <button nz-button nzType="default" class="post_add_gallery">Add Gallery</button>
+          <button nz-button nzType="default" class="post_add_essay">Add Visual Essay</button>
+        </div>
+        <div class="gutter-box">
+          <editor [(ngModel)]="post.postContent" [init]="tinyMCEConfig"></editor>
+        </div>
+      </div>
+    </div>
+  </nz-content>
+  <nz-sider class="general-sider" [nzWidth]="340">
+    <app-meta-box></app-meta-box>
+  </nz-sider>
+</nz-layout>

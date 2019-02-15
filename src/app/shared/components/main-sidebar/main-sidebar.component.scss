@@ -1,0 +1,34 @@
+.sidebar {
+  height: calc(100vh - 64px);
+}
+
+fa-icon {
+  width: 25px;
+  display: inline-block;
+  text-align: center;
+}
+
+:host ::ng-deep {
+  .ant-menu-sub {
+    .ant-menu-item {
+      padding-left: 35px !important;
+    }
+    .ant-menu-submenu-title {
+      padding-left: 35px !important;
+    }
+    .ant-menu-sub {
+      .ant-menu-item {
+        padding-left: 50px !important;
+      }
+    }
+  }
+
+  .ant-menu-inline {
+    .ant-menu-submenu-inline {
+      a {
+        color: rgba(255, 255, 255, 0.65);
+      }
+    }
+
+  }
+}

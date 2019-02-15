@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*GENERAL STYLES*/
+
+/*ANT STYLES*/
+.ant-pagination {
+  text-align: center !important;
+
+  &.ant-table-pagination {
+    float: none !important;
+  }
+}

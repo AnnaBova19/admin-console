@@ -1,0 +1,97 @@
+:host ::ng-deep {
+  .ant-row {
+    &.ant-form-item {
+      display: flex !important;
+
+      .ant-form-item-control-wrapper {
+        margin-right: 35px;
+      }
+    }
+  }
+
+  .close-icon {
+    .anticon-close-circle {
+      font-size: 20px;
+      line-height: 39px;
+      cursor: pointer;
+    }
+  }
+
+  .ant-select,
+  .ant-btn-default {
+    width: 90%;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  margin-left: 10px;
+  top: 4px;
+  font-size: 24px;
+  color: #999;
+  transition: all .3s;
+}
+
+.preview-title {
+  text-align: center;
+}
+
+.carousel {
+  width: 700px;
+  height: 600px;
+  margin: 0 auto;
+
+  .content {
+    display: flex;
+
+    .item {
+      width: 500px;
+      display: block;
+
+      .img {
+        width: 500px;
+        height: 550px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      }
+    }
+  }
+
+  .item {
+    width: 500px;
+    display: block;
+    .img {
+      width: 500px;
+      height: 550px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+  }
+
+  .ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000;
+    border: 2px solid;
+    opacity: 0.5;
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  &.transition {
+    transition: all .4s ease-in-out;
+  }
+}

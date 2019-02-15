@@ -1,0 +1,36 @@
+.general-content {
+  background-color: white;
+
+  .post_author {
+    width: 100%;
+  }
+  
+  .post_sponsor {
+    width: 100%;
+  }
+
+  .post_add_gallery {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  .post_add_essay {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.general-sider {
+  background-color: white;
+}
+
+:host ::ng-deep {
+  editor {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    .mce-container {
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+}

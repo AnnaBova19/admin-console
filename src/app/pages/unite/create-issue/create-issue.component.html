@@ -1,0 +1,104 @@
+<h1>New Issue</h1>
+<nz-divider></nz-divider>
+<nz-layout>
+  <nz-content>
+    <div nz-row nzGutter="24" class="flex" *ngIf="!isPreview">
+      <div nz-col nzSpan="2" class="gutter-row">
+        <label>Select Cover</label>
+      </div>
+      <div nz-col nzSpan="12" class="gutter-row">
+        <div class="gutter-box">
+          <nz-select [(ngModel)]="issue.cover" nzAllowClear nzPlaceHolder="Choose Cover">
+            <nz-option *ngFor="let cover of coverList" [nzLabel]="cover.name" [nzValue]="cover.slug"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </div>
+ 
+    <div *ngIf="!isPreview">
+      <div nz-row nzGutter="24" class="flex" *ngFor="let article of articles; let i = index; trackBy: trackByFn">
+        <div nz-col nzSpan="2" class="gutter-row">
+          <label>Article/Ad {{i+1}}</label>
+        </div>
+        <div nz-col nzSpan="12" class="gutter-row">
+          <div class="gutter-box">
+            <nz-select [(ngModel)]="issue.articles[i]" nzAllowClear nzPlaceHolder="Choose article">
+              <nz-option *ngFor="let post of posts" [nzLabel]="post.title" [nzValue]="post.id"></nz-option>
+            </nz-select>
+            <i *ngIf="i > 5" nz-icon type="minus-circle-o" class="dynamic-delete-button" (click)="removePage(i, $event)"></i>
+          </div>
+        </div>
+      </div>
+      <div nz-row nzGutter="24">
+        <div nz-col nzOffset="2" nzSpan="12" class="gutter-row">
+          <div class="gutter-box">
+            <button nz-button nzType="default" (click)="addPage($event)"><i nz-icon type="plus"></i> Add Page</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issue Preview Section -->
+    <div *ngIf="isPreview">
+      <h3 class="preview-title">Preview</h3>
+      <div id="contentToConvert"></div>
+      <ngx-hm-carousel
+        [infinite]="infinite"
+        [between-delay]="2000"
+        class="carousel c-accent">
+        <section ngx-hm-carousel-container class="content">
+          <article class="item cursor-pointer visible_important"
+            ngx-hm-carousel-item
+            *ngFor="let preview of issuePreviews; let i = index">
+            <div class="img" (click)="click(i)"
+              [style.backgroundImage]="'url('+preview.url+')'">
+            </div>
+          </article>
+        </section>
+        <ng-template #carouselPrev>
+          <div class="click-area">
+            <button nz-button><i nz-icon type="left"></i></button>
+          </div>
+        </ng-template>
+        <ng-template #carouselNext>
+          <div class="click-area">
+            <button nz-button><i nz-icon type="right"></i></button>
+          </div>
+        </ng-template>
+        <ng-template #carouselDot let-model>
+          <div class="ball bg-accent"
+            [class.visible]="model.index === model.currentIndex"></div>
+        </ng-template>
+      </ngx-hm-carousel>
+    </div>
+
+    <!-- Buttons Section -->
+    <div nz-row nzGutter="24" class="flex" [ngStyle]="{'justify-content': isPreview ? 'center' : 'flex-start'}">
+      <div nz-col nzOffset="2" class="gutter-row" *ngIf="!isPreview">
+        <div class="gutter-box">
+          <button nz-button (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" *ngIf="!isPreview">
+        <div class="gutter-box">
+          <button nz-button nzType="primary" (click)="showPreview()">Preview</button>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" *ngIf="isPreview">
+        <div class="gutter-box">
+          <button nz-button (click)="backToDraft()">Back To Draft</button>
+        </div>
+      </div>
+      <div nz-col class="gutter-row">
+        <div class="gutter-box">
+          <button nz-button nzType="primary" (click)="saveDraft()">Save Draft</button>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" *ngIf="isPreview">
+        <div class="gutter-box">
+          <button nz-button nzType="primary" (click)="publishIssue()">Publish</button>
+        </div>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>
